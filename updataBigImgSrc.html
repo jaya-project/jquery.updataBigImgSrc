@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标移动到小图上,小图地址取换大图地址</title>
+	<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+	<style type="text/css">
+	.bigdiv{ width:800px; overflow:hidden; padding-top:10px; float:left;}
+    .bigdiv img{ width:800px;  height: 400px;}
+    #goodsPicList {list-style: none; float:left;}
+	.current{  border: 1px solid #c00;}
+	</style>
+
+</head>
+<body>
+<div class="bigdiv">
+    <img src="img/1.jpg" id="big-img"  />
+</div>
+<div class="smalldiv">
+
+    <ul id="goodsPicList" >
+        <li>
+            <img class="current"  src="img/1.jpg"  width="75" height="75"></li>
+        <li>
+            <img   src="img/2.jpg"  width="75" height="75"></li>
+        <li>
+            <img   src="img/3.jpg"  width="75" height="75"></li>
+    </ul>
+
+</div>
+
+
+<script type="text/javascript">
+ function resetStyle()
+{
+    $('#goodsPicList li img').removeClass('current');
+}
+
+$(function () {
+    $('#goodsPicList li img').bind('mouseover', function() {
+        resetStyle();
+        $(this).addClass('current');
+        $('#big-img').attr('src', $(this).attr('src'));
+    });
+});
+</script>
+</body>
+</html>
